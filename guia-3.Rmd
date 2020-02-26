@@ -1,0 +1,57 @@
+---
+title: "Práctica de R"
+author: "Probabilidad y Estadística"
+date: "Ingeniería Industrial - Facultad de Ciencias Agrarias"
+output: pdf_document
+---
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+# Ingreso de archivos en R
+
+En primer lugar, vamos a ver el directorio que tenemos asignado en R.
+
+```{r }
+getwd()
+```
+
+En caso de que queramos cambiarlo, escribimos __setwd()__, junto con la ruta deseada. 
+
+```{r eval=FALSE}
+setwd()
+```
+
+En R, podemos ingresar distintos tipos de archivos, con diferentes extensiones. 
+
+## csv
+El archivo con extensión .csv, o archivo separado por comas se ingresa de la siguiente forma
+
+```{r}
+df1<-read.csv("datos.csv")
+```
+
+En caso de tenerlo separado por punto y coma, lo especificamos en el argumento de la función.
+```{r}
+df1<-read.csv("datos.csv", sep=";")
+```
+
+## txt
+Un archivo de texto plano lo podemos leer de manera directa, mediante la función __read.table()__
+```{r}
+df2<-read.table("datos.txt", header=TRUE)
+```
+
+
+## excel 
+Para leer archivos de excel, no podemos hacerlo de manera directa desde rbase, necesitamos una librería llamada __readxl__ 
+En caso de no tener instalada, la instalamos con el siguiente comando
+```{r eval=FALSE}
+install.packages(readxl) #instalo librería 
+```
+
+```{r}
+library(readxl) #cargo librería
+df3<-read_excel("datos.xlsx") #ingreso los datos
+```
+
